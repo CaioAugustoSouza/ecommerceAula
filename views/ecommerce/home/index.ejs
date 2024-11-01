@@ -1,0 +1,127 @@
+<!-- Navbar start -->
+<div class="container-fluid fixed-top">
+
+    <div class="container px-0">
+        <nav class="navbar navbar-light bg-white navbar-expand-xl">
+            <a href="/ecommerce" class="navbar-brand">
+                <h1 class="text-primary display-6">Ecommerce de Perfumes</h1>
+            </a>
+        </nav>
+    </div>
+</div>
+<!-- Featurs Section Start -->
+<div class="container-fluid featurs py-5">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fas fa-car-side fa-3x text-white"></i>
+                    </div>
+                    <div class="featurs-content text-center">
+                        <h5>Envio Grátis</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fas fa-user-shield fa-3x text-white"></i>
+                    </div>
+                    <div class="featurs-content text-center">
+                        <h5>Transação Segura</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fas fa-exchange-alt fa-3x text-white"></i>
+                    </div>
+                    <div class="featurs-content text-center">
+                        <h5>Troca em até 7 dias</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fa fa-phone-alt fa-3x text-white"></i>
+                    </div>
+                    <div class="featurs-content text-center">
+                        <h5>Suporte Humanizado</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featurs Section End -->
+
+
+<!-- Fruits Shop Start-->
+<div class="container-fluid fruite py-5">
+    <div class="container py-5">
+        <div class="tab-class text-center">
+            <div class="row g-4">
+                <div class="col-lg-10 text-start">
+                    <h1>Perfumes</h1>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+                                <!-- começo dos produtos -->
+                                <!-- produtoId;
+                                #produtoCodigo;
+                                #produtoNome;
+                                #produtoQuantidade;
+                                #categoriaId;
+                                #categoriaNome;
+                                #marcaId;
+                                #marcaNome;
+                                #produtoValorUnitario;
+                                #produtoImagem; -->
+                                <% for(let produto of produtos) { %>
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <% if (produto.produtoImagem) { %>
+                                                    <img src="<%= produto.produtoImagem %>"
+                                                        class="img-fluid w-100 rounded-top" alt="">
+                                                    <% } else { %>
+                                                        <img src="/img/produto-sem-foto.png"
+                                                            class="img-fluid w-100 rounded-top" />
+                                                        <% } %>
+
+                                            </div>
+                                            <h4>
+                                                <%= produto.produtoNome %>
+                                            </h4>
+                                            <p>
+                                                <%= produto.marcaNome %>
+                                            </p>
+                                            <div class="d-flex justify-content-center flex-lg-wrap row">
+                                                <p class="text-dark fs-5 fw-bold mb-2 col-md-12">R$<%=
+                                                        produto.produtoValorUnitario %>
+                                                </p>
+                                                <a href="#"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary col-md-8 mb-2"><i
+                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao
+                                                    Carrinho</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <!-- fim dos produtos -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
