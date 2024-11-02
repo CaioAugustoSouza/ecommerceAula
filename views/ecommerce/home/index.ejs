@@ -1,15 +1,15 @@
 <!-- Navbar start -->
-<div class="container-fluid fixed-top">
-
-    <div class="container px-0">
-        <nav class="navbar navbar-light bg-white navbar-expand-xl">
-            <a href="/ecommerce" class="navbar-brand">
-                <h1 class="text-primary display-6">Ecommerce de Perfumes</h1>
-            </a>
-        </nav>
+<script src="/ecommerce/js/carrinho.js"></script>
+<!-- Featurs Section Start -->
+<div class="container-fluid py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-md-12 col-lg-12 justify-content-center align-items-center d-flex" style="height: 300px;">             
+            </div>
+        </div>
     </div>
 </div>
-<!-- Featurs Section Start -->
+
 <div class="container-fluid featurs py-5">
     <div class="container py-5">
         <div class="row g-4">
@@ -107,10 +107,9 @@
                                                 <p class="text-dark fs-5 fw-bold mb-2 col-md-12">R$<%=
                                                         produto.produtoValorUnitario %>
                                                 </p>
-                                                <a href="#"
-                                                    class="btn border border-secondary rounded-pill px-3 text-primary col-md-8 mb-2"><i
-                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao
-                                                    Carrinho</a>
+                                                <button type="button" class="btn border border-secondary rounded-pill px-3 text-primary col-md-8 mb-2 btn-adicionar-carrinho" data-id="<%= produto.produtoId %>" data-nome="<%= produto.produtoNome %>" data-marca="<%= produto.marcaNome %>" data-imagem="<%= produto.produtoImagem %>" data-valor="<%=produto.produtoValorUnitario %>">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao
+                                                    Carrinho</button>
                                             </div>
                                         </div>
                                     </div>

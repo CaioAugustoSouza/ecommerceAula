@@ -8,6 +8,9 @@ class EcommerceController {
         produtos = await produtos.listarProdutos()
         res.render('ecommerce/home/index.ejs', {layout: 'ecommerce/layout.ejs', produtos:produtos});
     }
+    async carrinhoView (req,res){
+        res.render('ecommerce/home/carrinho', {layout: 'ecommerce/layout'})
+    }
 }
 
 module.exports = EcommerceController;

@@ -11,9 +11,9 @@ class Database {
 
         this.#conexao = mysql.createPool({
             host: '132.226.245.178', //endereço do nosso banco de dados na nuvem
-            database: 'PFS1_106888', //a database de cada um de vocês possui a nomenclatura PFS1_(RA)
-            user: '106888', // usuario e senha de cada um de vocês é o RA
-            password: '106888',
+            database: 'PFS1_10442324668', //a database de cada um de vocês possui a nomenclatura PFS1_(RA)
+            user: '10442324668', // usuario e senha de cada um de vocês é o RA
+            password: '10442324668',
         });
         
     }
