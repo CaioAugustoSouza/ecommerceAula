@@ -4,53 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let btnCarrinho of btnsCarrinho) {
         btnCarrinho.addEventListener('click', adicionarCarrinho)
     }
-    let cartContent = document.getElementById('cart-content');
-    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : [];
-    if (carrinho.length > 0) {
-        for (let produto of carrinho) {
-            let linha = document.createElement('tr');
-            linha.innerHTML = `
-            <th scope="row">
-                            <div class="d-flex align-items-center">
-                                <img src="${produto.imagem}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
-                            </div>
-                        </th>
-                        <td>
-                            <p class="mb-0 mt-4">${produto.nome}</p>
-                        </td>
-                        <td>
-                            <p class="mb-0 mt-4">R$${produto.valor}</p>
-                        </td>
-                        <td>
-                            <div class="input-group quantity mt-4" style="width: 100px;">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm text-center border-0" value="${produto.quantidade}">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <p class="mb-0 mt-4">R$${produto.valor * produto.quantidade}</p>
-                        </td>
-                        <td>
-                            <button class="btn btn-md rounded-circle bg-light border mt-4" >
-                                <i class="fa fa-times text-danger"></i>
-                            </button>
-                        </td>`
-            cartContent.appendChild(linha);
-
-        }
-
-    }
-
-
+    let meuCarrinho = document.getElementById('meu-carrinho');
+    mostrarCarrinho(meuCarrinho);
+    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : []
+    console.log(carrinho)
 })
 
 function adicionarCarrinho(event) {
@@ -82,4 +39,55 @@ function adicionarCarrinho(event) {
     let cartContent = document.getElementById('cart-content')
     cartContent.innerHTML = sacola.length;
     alert('Produto Adicionado ao Carrinho')
+}
+
+
+function mostrarCarrinho(cartContent) {
+    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : [];
+    let total = 0;
+    let linha;
+    if (carrinho.length > 0) {
+        for (let produto of carrinho) {
+            linha = document.createElement('tr');
+            linha.innerHTML = `
+            <th scope="row">
+                            <div class="d-flex align-items-center">
+                                <img src="${produto.imagem}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                            </div>
+                        </th>
+                        <td>
+                            <p class="mb-0 mt-4">${produto.nome}</p>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">R$${parseFloat(produto.valor)}</p>
+                        </td>
+                        <td>
+                            <div class="input-group quantity mt-4" style="width: 100px;">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                    <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control form-control-sm text-center border-0" value="${produto.quantidade}">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">R$${parseFloat(produto.valor * produto.quantidade)}</p>
+                        </td>
+                        <td>
+                            <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                                <i class="fa fa-times text-danger"></i>
+                            </button>
+                        </td>`
+            cartContent.appendChild(linha);
+            total += produto.valor*produto.quantidade;
+        }
+    }
+    let inputValorTotal = document.getElementById('valor-total');
+    inputValorTotal.innerText = `R$${total}`;
 }
