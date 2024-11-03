@@ -8,8 +8,18 @@ class EcommerceController {
         produtos = await produtos.listarProdutos()
         res.render('ecommerce/home/index.ejs', {layout: 'ecommerce/layout.ejs', produtos:produtos});
     }
-    async carrinhoView (req,res){
+    carrinhoView (req,res){
         res.render('ecommerce/home/carrinho', {layout: 'ecommerce/layout'})
+    }
+    async obterValor(req,res){
+        let id = req.body.id;
+        let produto = new ProdutoModel();
+        produto = await produto.buscarProduto(id);
+        let ok = false;
+        if (produto){
+            ok=true;
+        }
+        res.json({produto:produto, ok:ok});
     }
 }
 

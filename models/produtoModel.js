@@ -120,6 +120,20 @@ class ProdutoModel {
 
         return listaRetorno;
     }
+    toJSON(){
+        return {
+            'produtoId' : this.#produtoId,
+            'produtoCodigo' : this.#produtoCodigo,
+            'produtoNome' : this.#produtoNome,
+            'produtoQuantidade' : this.#produtoQuantidade,
+            'categoriaId' : this.#categoriaId,
+            'categoriaNome' : this.#categoriaNome,
+            'marcaId' : this.#marcaId,
+            'marcaNome' : this.#marcaNome,
+            'produtoValorUnitario' : this.#produtoValorUnitario,
+            'produtoImagem' : this.#produtoImagem
+        }
+    }
 
 }
 
