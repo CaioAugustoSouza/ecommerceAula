@@ -80,7 +80,7 @@ function mostrarCarrinho(cartContent) {
                             </div>
                         </td>
                         <td>
-                            <p class="mb-0 mt-4">R$${produto.valor*produto.quantidade}</p>
+                            <p class="mb-0 mt-4" id="total-de-${produto.id}">R$${produto.valor*produto.quantidade}</p>
                         </td>
                         <td>
                             <button class="btn btn-md rounded-circle bg-light border mt-4 btn-excluir-produto" id="btn-excluir-produto" data-id=${produto.id}>
@@ -124,13 +124,21 @@ async function atualizarPreco() {
 }
 
 function atualizarQuantidade(event){
+    let total = 0;
     JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : [];
     let inputValor = event.target
     for (let produto of carrinho){
         if(produto.id == inputValor.dataset.id){
             produto.quantidade = parseInt(inputValor.value);
+            let totalDoItem = document.getElementById(`total-de-${produto.id}`);
+            totalDoItem.innerHTML = `R$${produto.valor*produto.quantidade}` 
         }
     }
+    for(let produto of carrinho){
+        total+= parseFloat(produto.valor*produto.quantidade)
+    }
+    let inputValorTotal = document.getElementById('valor-total');
+    inputValorTotal.innerHTML = `R$${total}`;
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
