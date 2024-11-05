@@ -1,5 +1,5 @@
 const Database = require('../db/database');
-
+const fs = require('fs');
 const conexao = new Database();
 class ProdutoModel {
 
@@ -106,8 +106,8 @@ class ProdutoModel {
 
                 var row = rows[i];
 
-                let imagem = "img/produto-sem-foto.png";
-                if(row["prd_imagem"] != null) {
+                let imagem = "/img/produto-sem-foto.png";
+                if(row["prd_imagem"] != '' && fs.existsSync(global.CAMINHO_IMG_REAL + global.CAMINHO_IMG_NAV + row['prd_imagem'])) {
                     imagem = global.CAMINHO_IMG_NAV + row["prd_imagem"];
                 }
                     

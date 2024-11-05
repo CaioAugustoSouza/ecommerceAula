@@ -67,7 +67,8 @@ class ProdutoController {
                 imagem = req.file.filename;            
                 if(produtoOld) {
                     let caminho = global.CAMINHO_IMG_REAL + produtoOld.produtoImagem;
-                    fs.unlinkSync(caminho);
+                    if (fs.existsSync(caminho))
+                        fs.unlinkSync(caminho);
                 }
             }
 

@@ -12,7 +12,7 @@ class EcommerceController {
         res.render('ecommerce/home/carrinho', {layout: 'ecommerce/layout'})
     }
     async obterValor(req,res){
-        let id = req.body.id;
+        let id = req.params.id;
         let produto = new ProdutoModel();
         produto = await produto.buscarProduto(id);
         let ok = false;

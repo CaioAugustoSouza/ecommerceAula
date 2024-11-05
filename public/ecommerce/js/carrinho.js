@@ -21,9 +21,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 })
 
-function adicionarCarrinho(event) {
+function adicionarCarrinho() {
     JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : [];
-    let btnCarrino = event.target;
+    let btnCarrino = this;
+    let that = this;
     let id = btnCarrino.dataset.id;
     let nome = btnCarrino.dataset.nome;
     let imagem = btnCarrino.dataset.imagem;
@@ -49,7 +50,10 @@ function adicionarCarrinho(event) {
     let sacola = JSON.parse(localStorage.getItem('carrinho'));
     let cartContent = document.getElementById('cart-content')
     cartContent.innerHTML = sacola.length;
-    alert('Produto Adicionado ao Carrinho')
+    that.innerHTML = '<i class="fa fa-check me-2 text-primary">Adicionado ao carrinho';
+    setTimeout(() => {
+        that.innerHTML = `<i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao Carrinho`
+    }, 1000);
 }
 
 
@@ -98,19 +102,14 @@ function mostrarCarrinho(cartContent) {
 async function atualizarPreco() {
     JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : [];
     if (carrinho.length > 0) {
-        for (let produto of carrinho) {
-            let body = JSON.stringify({ id: produto.id });
-            await fetch('/ecommerce/obter-valor', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: body
-            })
+        for (let produto of carrinho) { 
+            await fetch('/ecommerce/obter-valor/' + produto.id)
             .then(r => r.json())
             .then(r => {
                 if (r.ok) {
                     produto.valor = r.produto.produtoValorUnitario;
+                    produto.nome = r.produto.produtoNome                            
+                    produto.imagem = r.produto.produtoImagem
                     console.log(produto)
                 }
             })
@@ -123,10 +122,10 @@ async function atualizarPreco() {
     }
 }
 
-function atualizarQuantidade(event){
+function atualizarQuantidade(){
     let total = 0;
     JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : [];
-    let inputValor = event.target
+    let inputValor = this
     for (let produto of carrinho){
         if(produto.id == inputValor.dataset.id){
             produto.quantidade = parseInt(inputValor.value);
@@ -142,8 +141,8 @@ function atualizarQuantidade(event){
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
-function excluirDoCarrinho(event){
-    let thisElement = event.target;
+function excluirDoCarrinho(){
+    let thisElement = this;
     let thisId = thisElement.dataset.id;
     for(let i=0; i<carrinho.length; i++){
         if (thisId == carrinho[i].id){
