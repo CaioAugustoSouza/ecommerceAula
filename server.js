@@ -48,3 +48,6 @@ global.CAMINHO_IMG_REAL = __dirname + "/public";
 const server = app.listen('5000', function() {
     console.log('Servidor web iniciado');
 });
+
+
+//adicionar modal por include no ejs

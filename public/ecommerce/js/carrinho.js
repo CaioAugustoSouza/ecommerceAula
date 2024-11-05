@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     meuCarrinho.innerHTML = '';
     await atualizarPreco();
     mostrarCarrinho(meuCarrinho);
-    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : []
+    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : carrinho = []
     // console.log(carrinho)
 
     let inptsQnt = document.querySelectorAll('.inputQuantidade')
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 })
 
 function adicionarCarrinho() {
-    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : [];
+    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : carrinho = [];
     let btnCarrino = this;
     let that = this;
     let id = btnCarrino.dataset.id;
@@ -58,7 +58,7 @@ function adicionarCarrinho() {
 
 
 function mostrarCarrinho(cartContent) {
-    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : [];
+    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : carrinho = [];
     let total = 0;
     let linha;
     if (carrinho.length > 0) {
@@ -124,7 +124,7 @@ async function atualizarPreco() {
 
 function atualizarQuantidade(){
     let total = 0;
-    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : [];
+    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : carrinho = [];
     let inputValor = this
     for (let produto of carrinho){
         if(produto.id == inputValor.dataset.id){

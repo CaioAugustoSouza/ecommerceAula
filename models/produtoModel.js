@@ -70,7 +70,8 @@ class ProdutoModel {
     }
 
     async buscarProduto(id){
-        let sql = 'select * from tb_produto where prd_id = ? order by prd_id';
+        let sql =`select * from tb_produto where prd_id = ? order by prd_id
+        join tb_ marca m on m.`;
         let valores = [id];
         var rows = await conexao.ExecutaComando(sql, valores);
 
@@ -80,7 +81,7 @@ class ProdutoModel {
             var row = rows[0];
 
             let imagem = "img/produto-sem-foto.png";
-            if(row["prd_imagem"] != null) {
+            if(row["prd_imagem"] != null && fs.existsSync(global.CAMINHO_IMG_REAL + global.CAMINHO_IMG_NAV + row['prd_imagem'])) {
                 imagem = global.CAMINHO_IMG_NAV + row["prd_imagem"];
             }
             
