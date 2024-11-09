@@ -70,8 +70,7 @@ class ProdutoModel {
     }
 
     async buscarProduto(id){
-        let sql =`select * from tb_produto where prd_id = ? order by prd_id
-        join tb_ marca m on m.`;
+        let sql =`select * from tb_produto where prd_id = ? order by prd_id`;
         let valores = [id];
         var rows = await conexao.ExecutaComando(sql, valores);
 
