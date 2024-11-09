@@ -33,13 +33,13 @@ let auth = new AuthMiddleware();
 
 app.use(auth.verificarUsuarioLogado);
 
-app.use('/', homeRoute)
-app.use('/produto', produtoRoute);
-app.use("/marcas", marcaRoute);
-app.use("/categorias", categoriaRoute);
-app.use("/usuarios", usuarioRoute);
-app.use("/perfis", perfilRoute);
-app.use('/ecommerce', ecommerceRoute)
+app.use('/admin/', homeRoute)
+app.use('/admin/produto', produtoRoute);
+app.use("/admin/marcas", marcaRoute);
+app.use("/admin/categorias", categoriaRoute);
+app.use("/admin/usuarios", usuarioRoute);
+app.use("/admin/perfis", perfilRoute);
+app.use('/', ecommerceRoute)
 
 global.CAMINHO_IMG_NAV = "/img/produtos/";
 global.CAMINHO_IMG_REAL = __dirname + "/public";

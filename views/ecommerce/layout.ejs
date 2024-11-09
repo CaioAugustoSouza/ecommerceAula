@@ -34,7 +34,8 @@
 <body>
 
     <!-- Spinner Start -->
-    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+    <div id="spinner"
+        class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" role="status"></div>
     </div>
     <!-- Spinner End -->
@@ -44,22 +45,31 @@
     <div class="container-fluid fixed-top">
         <div class="container px-0">
             <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                <a href="/ecommerce" class="navbar-brand"><h1 class="text-primary display-6">Loja Online</h1></a>
-                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <a href="/" class="navbar-brand">
+                    <h1 class="text-primary display-6">Loja Online</h1>
+                </a>
+                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars text-primary"></span>
                 </button>
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                     <div class="navbar-nav mx-auto">
-                        <a href="/ecommerce" class="nav-item nav-link active">Home</a>
-                    
+                        <a href="/" class="nav-item nav-link active">Home</a>
+
                     </div>
                     <div class="d-flex m-3 me-0">
-                        
-                        <a href="/ecommerce/carrinho" class="position-relative me-4 my-auto">
+
+                        <a href="/carrinho" class="position-relative me-4 my-auto">
                             <i class="fa fa-shopping-bag fa-2x"></i>
-                            <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;" id="cart-content"></span>
+                            <span
+                                class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;" id="cart-content"></span>
                         </a>
-                
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#carrinhoModal">
+                            Previa do Carrinho
+                        </button>
+
                     </div>
                 </div>
             </nav>
@@ -71,40 +81,101 @@
     <%- body %>
 
 
-    <!-- Copyright Start -->
-    <div class="container-fluid copyright bg-dark py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Loja Online</a>, All right reserved.</span>
-                </div>
-                <div class="col-md-6 my-auto text-center text-md-end text-white">
-                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a
-                        class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="carrinhoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid py-5">
+                            <div class="container py-5">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Produto</th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">Preço</th>
+                                                <th scope="col">Quantidade</th>
+                                                <th scope="col">Total</th>
+                                                <th scope="col">Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="meu-carrinho">
+                                            <!-- corpo do carrinho -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row g-4 justify-content-end">
+                                    <div class="col-8"></div>
+                                    <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+                                        <div class="bg-light rounded">
+                                            <div
+                                                class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                                                <h5 class="mb-0 ps-4 me-4">Total</h5>
+                                                <p class="mb-0 pe-4" id="valor-total"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Finalizar Compra</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Copyright End -->
+
+
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright bg-dark py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Loja
+                                Online</a>, All right reserved.</span>
+                    </div>
+                    <div class="col-md-6 my-auto text-center text-md-end text-white">
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By
+                        <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
 
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
-            class="fa fa-arrow-up"></i></a>
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
+                class="fa fa-arrow-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/ecommerce/lib/easing/easing.min.js"></script>
-    <script src="/ecommerce/lib/waypoints/waypoints.min.js"></script>
-    <script src="/ecommerce/lib/lightbox/js/lightbox.min.js"></script>
-    <script src="/ecommerce/lib/owlcarousel/owl.carousel.min.js"></script>
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/ecommerce/lib/easing/easing.min.js"></script>
+        <script src="/ecommerce/lib/waypoints/waypoints.min.js"></script>
+        <script src="/ecommerce/lib/lightbox/js/lightbox.min.js"></script>
+        <script src="/ecommerce/lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="/ecommerce/js/main.js"></script>
-    <script src="/ecommerce/js/js.js"></script>
+        <!-- carrinho -->
+        <script src="/ecommerce/js/carrinhoModal.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="/ecommerce/js/main.js"></script>
+        <script src="/ecommerce/js/js.js"></script>
 </body>
 
 </html>

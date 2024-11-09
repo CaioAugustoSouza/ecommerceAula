@@ -4,7 +4,7 @@
 <div class="container-fluid py-5 mb-5 hero-header">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
-            <div class="col-md-12 col-lg-12 justify-content-center align-items-center d-flex" style="height: 300px;">             
+            <div class="col-md-12 col-lg-12 justify-content-center align-items-center d-flex" style="height: 300px;">
             </div>
         </div>
     </div>
@@ -107,7 +107,13 @@
                                                 <p class="text-dark fs-5 fw-bold mb-2 col-md-12">R$<%=
                                                         produto.produtoValorUnitario %>
                                                 </p>
-                                                <button type="button" class="btn border border-secondary rounded-pill px-3 text-primary col-md-8 mb-2 btn-adicionar-carrinho" data-id="<%= produto.produtoId %>" data-nome="<%= produto.produtoNome %>" data-marca="<%= produto.marcaNome %>" data-imagem="<%= produto.produtoImagem %>" data-valor="<%=produto.produtoValorUnitario %>">
+                                                <button type="button"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary col-md-8 mb-2 btn-adicionar-carrinho"
+                                                    data-id="<%= produto.produtoId %>"
+                                                    data-nome="<%= produto.produtoNome %>"
+                                                    data-marca="<%= produto.marcaNome %>"
+                                                    data-imagem="<%= produto.produtoImagem %>"
+                                                    data-valor="<%=produto.produtoValorUnitario %>">
                                                     <i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao
                                                     Carrinho</button>
                                             </div>
@@ -123,4 +129,5 @@
         </div>
     </div>
 </div>
-</div>
+
+

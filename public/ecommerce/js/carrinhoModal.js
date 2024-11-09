@@ -1,66 +1,14 @@
 var carrinho = []
 document.addEventListener('DOMContentLoaded', async () => {
-    let btnsCarrinho = document.querySelectorAll('.btn-adicionar-carrinho')
-    for (let btnCarrinho of btnsCarrinho) {
-        btnCarrinho.addEventListener('click', adicionarCarrinho)
-    }
-    let meuCarrinho = document.getElementById('meu-carrinho');
-    meuCarrinho.innerHTML = '';
-    await atualizarPreco();
-    mostrarCarrinho(meuCarrinho);
-    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : carrinho = []
-    // console.log(carrinho)
-
-    let inptsQnt = document.querySelectorAll('.inputQuantidade')
-    for(let inptQnt of inptsQnt){
-        inptQnt.addEventListener('blur', atualizarQuantidade);
-    }
-    let btnsExcluirProduto = document.querySelectorAll('.btn-excluir-produto');
-    for(let btnExcluirProduto of btnsExcluirProduto){
-        btnExcluirProduto.addEventListener('click', excluirDoCarrinho)
-    }
+    
 })
 
-function adicionarCarrinho() {
-    JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : carrinho = [];
-    let btnCarrino = this;
-    let that = this;
-    let id = btnCarrino.dataset.id;
-    let nome = btnCarrino.dataset.nome;
-    let imagem = btnCarrino.dataset.imagem;
-    let valor = btnCarrino.dataset.valor
-    let obj = {
-        id: id,
-        nome: nome,
-        imagem: imagem,
-        quantidade: 1,
-        valor: valor
-    }
-    let produtoAdicionado = false
-    for (let produto of carrinho) {
-        if (obj.id == produto.id) {
-            produto.quantidade++;
-            produtoAdicionado = true
-        }
-    }
-    if (!produtoAdicionado) {
-        carrinho.push(obj)
-    }
-    localStorage.setItem('carrinho', JSON.stringify(carrinho))
-    let sacola = JSON.parse(localStorage.getItem('carrinho'));
-    let cartContent = document.getElementById('cart-content')
-    cartContent.innerHTML = sacola.length;
-    that.innerHTML = '<i class="fa fa-check me-2 text-primary">Adicionado ao carrinho';
-    setTimeout(() => {
-        that.innerHTML = `<i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao Carrinho`
-    }, 1000);
-}
-
-
 function mostrarCarrinho(cartContent) {
+    atualizarPreco();
     JSON.parse(localStorage.getItem('carrinho')) ? carrinho = JSON.parse(localStorage.getItem('carrinho')) : carrinho = [];
     let total = 0;
     let linha;
+    
     if (carrinho.length > 0) {
         for (let produto of carrinho) {
             linha = document.createElement('tr');
